@@ -85,7 +85,7 @@ export default class Voidfull {
 				list: ({
 					siteId = this.siteId,
 					postId
-				}: ListPostCategoriesParameteres) => {
+				}: ListPostCategoriesParameteres): Promise<ListCategoriesResponse> => {
 					return this.request({
 						prefixUrl: `${this.apiBaseUrl}/v1/sites/${siteId}/posts/${postId}/category`,
 						method: 'GET'
