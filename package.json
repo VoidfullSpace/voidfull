@@ -1,0 +1,17 @@
+{
+  "name": "voidfull",
+  "private": true,
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=9.1.4"
+  },
+  "packageManager": "pnpm@9.1.4",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codecarrotlabs/voidfull.git"
+  },
+  "bugs": {
+    "url": "https://github.com/codecarrotlabs/voidfull/issues"
+  },
+  "homepage": "https://github.com/codecarrotlabs/voidfull#readme"
+}
