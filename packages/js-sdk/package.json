@@ -3,13 +3,18 @@
 	"version": "0.0.0-alpha.1",
 	"description": "",
 	"license": "Apache-2.0",
-	"types": "dist/index.d.ts",
-	"main": "dist/index.js",
+	"main": "src/index.ts",
 	"type": "commonjs",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"keywords": ["voidfull", "rest", "voidfull-api", "voidfullapi", "codecarrot"],
+	"keywords": [
+		"voidfull",
+		"rest",
+		"voidfull-api",
+		"voidfullapi",
+		"codecarrot"
+	],
 	"author": "",
 	"devDependencies": {
 		"@types/node": "^20.11.30",
