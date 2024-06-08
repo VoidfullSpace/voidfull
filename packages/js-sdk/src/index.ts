@@ -15,16 +15,19 @@ import type {
 export default class Voidfull {
 	readonly apiBaseUrl = 'https://api.voidfull.codecarrot.net/api';
 
-	private siteId: string;
-	private token?: string | undefined;
+	private readonly siteId: string;
+	private readonly token?: string | undefined;
 
 	constructor({ siteId, token }: ClientOptions) {
 		this.siteId = siteId;
 
 		if (token) {
 			this.token = token;
-		} else {
+		} else if ('VOIDFULL_CONTENT_TOKEN' in process.env) {
+			// biome-ignore lint/complexity/useLiteralKeys: <explanation>
 			this.token = process.env['VOIDFULL_CONTENT_TOKEN'];
+		} else {
+			throw Error('Failed to authorise');
 		}
 	}
 
@@ -111,6 +114,7 @@ export default class Voidfull {
 			for (const [key, value] of Object.entries(query)) {
 				if (value !== undefined) {
 					if (Array.isArray(value)) {
+						// biome-ignore lint/complexity/noForEach: <explanation>
 						value.forEach((val) =>
 							url.searchParams.append(key, decodeURIComponent(val))
 						);
