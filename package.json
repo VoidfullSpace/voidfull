@@ -13,5 +13,9 @@
   "bugs": {
     "url": "https://github.com/codecarrotlabs/voidfull/issues"
   },
-  "homepage": "https://github.com/codecarrotlabs/voidfull#readme"
+  "homepage": "https://github.com/codecarrotlabs/voidfull#readme",
+  "devDependencies": {
+    "@biomejs/biome": "1.8.0",
+    "lefthook": "^1.6.15"
+  }
 }

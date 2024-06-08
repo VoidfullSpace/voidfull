@@ -1,0 +1,41 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{tsx,ts,js,jsx}"
+      run: |
+        if command -v pnpm &> /dev/null; then
+          pnpm biome format --write {staged_files}
+        else 
+          pkgx +nodejs.org@20 +pnpm.io \
+            pnpm biome format --write {staged_files}
+        fi
+      stage_fixed: true
+#    check:
+#      glob: "*.{tsx,ts,js,jsx}"
+#      run: |
+#        if command -v pnpm &> /dev/null; then
+#          pnpm biome check --apply {staged_files}
+#        else
+#          pkgx +nodejs.org@20 +pnpm.io \
+#            pnpm biome check --apply {staged_files}
+#        fi
+#      stage_fixed: true
+#     formmat_i18n_json:
+#       glob: "./packages/webapp/public/locales/**/*.json"
+#       run: |
+#         pkgx +nodejs.org@20 +pnpm.io \
+#         pnpm biome format --write {staged_files}
+#       stage_fixed: true
+
+post-checkout:
+  piped: true
+  commands:
+    pkg_install:
+      run: |
+        if command -v pnpm &> /dev/null; then
+          pnpm i
+        else 
+          pkgx +nodejs.org@20 +pnpm.io \
+            pnpm i
+        fi
