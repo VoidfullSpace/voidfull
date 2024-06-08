@@ -8,6 +8,8 @@ import type {
   RetrievePostsParameteres,
   ListPostCategoriesParameteres,
   RetrieveSiteResponse,
+  ListCategoriesResponse,
+  ListPostResponse,
 } from "./types";
 
 export default class Voidfull {
@@ -49,7 +51,7 @@ export default class Voidfull {
         { siteId }: RetrieveCategoriesParameteres = {
           siteId: this.siteId,
         }
-      ) => {
+      ): Promise<ListCategoriesResponse[]> => {
         return this.request({
           prefixUrl: `${this.apiBaseUrl}/v1/sites/${siteId}/category`,
           method: "GET",
@@ -62,14 +64,17 @@ export default class Voidfull {
         { siteId }: ListPostsParameteres = {
           siteId: this.siteId,
         }
-      ) => {
+      ): Promise<ListPostResponse[]> => {
         return this.request({
           prefixUrl: `${this.apiBaseUrl}/v1/sites/${siteId}/posts`,
           method: "GET",
         });
       },
 
-      retieve: ({ siteId = this.siteId, postId }: RetrievePostsParameteres) => {
+      retieve: ({
+        siteId = this.siteId,
+        postId,
+      }: RetrievePostsParameteres): Promise<ListPostResponse> => {
         return this.request({
           prefixUrl: `${this.apiBaseUrl}/v1/sites/${siteId}/posts/${postId}`,
           method: "GET",

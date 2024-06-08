@@ -40,6 +40,20 @@ export type QueryCategoriesParameteres = {
 
 export type RetrieveCategoriesParameteres = RetrieveSiteParameteres;
 
+type Category = {
+  id: string;
+  name: string;
+  slug?: string;
+  description?: string;
+  icon?: string;
+  parentId?: string;
+  status: 'active';
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export type ListCategoriesResponse = Category[]
+
 // ==========
 // POSTS
 // ==========
@@ -51,3 +65,18 @@ export type RetrievePostsParameteres = RetrieveSiteParameteres & {
 };
 
 export type ListPostCategoriesParameteres = RetrievePostsParameteres;
+
+type Post = {
+  id: string;
+  title: string;
+  slug: string;
+  contentMarkdown: string | null;
+  content: string | null;
+  featureImage: string | null;
+  publishedAt: Date;
+  updatedAt: Date;
+  timeToRead: number;
+  excerpt: string;
+}
+
+export type ListPostResponse = Post[]
