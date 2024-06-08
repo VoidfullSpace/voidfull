@@ -1,4 +1,4 @@
-export function getPackageVersion(): string {
-	const packageJson = require('../package.json');
+export async function getPackageVersion(): Promise<string> {
+	const packageJson = await import('../package.json');
 	return packageJson.version;
 }
