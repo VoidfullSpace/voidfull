@@ -4,6 +4,10 @@ export interface ClientOptions {
 	 */
 	token?: string;
 	siteId: string;
+	/**
+	 * @default v1
+	 */
+	voidfullVersion?: string;
 }
 
 type QueryParams = Record<string, string | number | string[]> | URLSearchParams;

@@ -15,11 +15,14 @@ import type {
 export default class Voidfull {
 	readonly apiBaseUrl = 'https://api.voidfull.codecarrot.net/api';
 
+	private readonly voidfullVersion: string;
+	private readonly defaultVoidfullVersion: string = 'v1';
 	private readonly siteId: string;
 	private readonly token?: string | undefined;
 
-	constructor({ siteId, token }: ClientOptions) {
+	constructor({ siteId, voidfullVersion, token }: ClientOptions) {
 		this.siteId = siteId;
+		this.voidfullVersion = voidfullVersion ?? this.defaultVoidfullVersion;
 
 		if (token) {
 			this.token = token;
@@ -42,7 +45,7 @@ export default class Voidfull {
 			}
 		): Promise<RetrieveSiteResponse> => {
 			return this.request({
-				prefixUrl: `${this.apiBaseUrl}/v1/sites/${siteId}`,
+				prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}`,
 				method: 'GET'
 			});
 		},
@@ -57,7 +60,7 @@ export default class Voidfull {
 				}
 			): Promise<ListCategoriesResponse[]> => {
 				return this.request({
-					prefixUrl: `${this.apiBaseUrl}/v1/sites/${siteId}/category`,
+					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/category`,
 					method: 'GET'
 				});
 			}
@@ -70,7 +73,7 @@ export default class Voidfull {
 				}
 			): Promise<ListPostResponse[]> => {
 				return this.request({
-					prefixUrl: `${this.apiBaseUrl}/v1/sites/${siteId}/posts`,
+					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/posts`,
 					method: 'GET'
 				});
 			},
@@ -80,7 +83,7 @@ export default class Voidfull {
 				postId
 			}: RetrievePostsParameteres): Promise<ListPostResponse> => {
 				return this.request({
-					prefixUrl: `${this.apiBaseUrl}/v1/sites/${siteId}/posts/${postId}`,
+					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/posts/${postId}`,
 					method: 'GET'
 				});
 			},
@@ -91,7 +94,7 @@ export default class Voidfull {
 					postId
 				}: ListPostCategoriesParameteres): Promise<ListCategoriesResponse> => {
 					return this.request({
-						prefixUrl: `${this.apiBaseUrl}/v1/sites/${siteId}/posts/${postId}/category`,
+						prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/posts/${postId}/category`,
 						method: 'GET'
 					});
 				}
