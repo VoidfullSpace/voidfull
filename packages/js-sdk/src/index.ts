@@ -75,7 +75,7 @@ export default class Voidfull {
 				});
 			},
 
-			retieve: ({
+			retrieve: ({
 				siteId = this.siteId,
 				postId
 			}: RetrievePostsParameteres): Promise<ListPostResponse> => {
