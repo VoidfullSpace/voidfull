@@ -22,27 +22,31 @@ export interface RequestParams {
 // SITES
 // ==========
 
-export type RetrieveSiteParameteres = {
+export type SiteObject = {
+	id: string;
+	name: string;
+	createdAt: string;
+};
+
+export type RetrieveSiteParameters = {
 	siteId: string;
 };
 
 export type RetrieveSiteResponse = {
-	id: string;
-	name: string;
-	createdAt: string;
+	site: SiteObject;
 };
 
 // ==========
 // CATEGORIES
 // ==========
 
-export type QueryCategoriesParameteres = {
+export type QueryCategoriesParameters = {
 	first: string;
 	status: string;
 	after: string;
 };
 
-export type RetrieveCategoriesParameteres = RetrieveSiteParameteres;
+export type RetrieveCategoriesParameteres = RetrieveSiteParameters;
 
 type Category = {
 	id: string;
@@ -62,13 +66,13 @@ export type ListCategoriesResponse = Category[];
 // POSTS
 // ==========
 
-export type ListPostsParameteres = RetrieveSiteParameteres;
+export type ListPostsParameters = RetrieveSiteParameters;
 
-export type RetrievePostsParameteres = RetrieveSiteParameteres & {
+export type RetrievePostsParameters = RetrieveSiteParameters & {
 	postId: string;
 };
 
-export type ListPostCategoriesParameteres = RetrievePostsParameteres;
+export type ListPostCategoriesParameters = RetrievePostsParameters;
 
 type Post = {
 	id: string;

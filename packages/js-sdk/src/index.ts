@@ -3,10 +3,10 @@ import type {
 	ClientOptions,
 	RequestParams,
 	RetrieveCategoriesParameteres,
-	ListPostsParameteres,
-	RetrieveSiteParameteres,
-	RetrievePostsParameteres,
-	ListPostCategoriesParameteres,
+	ListPostsParameters,
+	RetrieveSiteParameters,
+	RetrievePostsParameters,
+	ListPostCategoriesParameters,
 	RetrieveSiteResponse,
 	ListCategoriesResponse,
 	ListPostResponse
@@ -40,7 +40,7 @@ export default class Voidfull {
 		 * Retrieve site info.
 		 */
 		retrieve: (
-			{ siteId }: RetrieveSiteParameteres = {
+			{ siteId }: RetrieveSiteParameters = {
 				siteId: this.siteId
 			}
 		): Promise<RetrieveSiteResponse> => {
@@ -68,7 +68,7 @@ export default class Voidfull {
 
 		posts: {
 			list: (
-				{ siteId }: ListPostsParameteres = {
+				{ siteId }: ListPostsParameters = {
 					siteId: this.siteId
 				}
 			): Promise<ListPostResponse[]> => {
@@ -81,7 +81,7 @@ export default class Voidfull {
 			retrieve: ({
 				siteId = this.siteId,
 				postId
-			}: RetrievePostsParameteres): Promise<ListPostResponse> => {
+			}: RetrievePostsParameters): Promise<ListPostResponse> => {
 				return this.request({
 					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/posts/${postId}`,
 					method: 'GET'
@@ -92,7 +92,7 @@ export default class Voidfull {
 				list: ({
 					siteId = this.siteId,
 					postId
-				}: ListPostCategoriesParameteres): Promise<ListCategoriesResponse> => {
+				}: ListPostCategoriesParameters): Promise<ListCategoriesResponse> => {
 					return this.request({
 						prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/posts/${postId}/category`,
 						method: 'GET'
@@ -135,7 +135,7 @@ export default class Voidfull {
 				method
 			});
 
-			return response.json();
+			return (await response.json()) as ResponseBody;
 		} catch (error: unknown) {
 			throw error;
 		}
