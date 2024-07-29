@@ -13,7 +13,7 @@ import type {
 } from './types';
 
 export default class Voidfull {
-	readonly apiBaseUrl = 'https://api.voidfull.codecarrot.net/api';
+	readonly apiBaseUrl = 'https://api.app.voidfull.com';
 
 	private readonly voidfullVersion: string;
 	private readonly defaultVoidfullVersion: string = 'v1';
