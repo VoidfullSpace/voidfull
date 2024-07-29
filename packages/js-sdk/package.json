@@ -4,6 +4,7 @@
 	"description": "",
 	"license": "Apache-2.0",
 	"main": "src/index.ts",
+	"types": "src/types.ts",
 	"type": "commonjs",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
