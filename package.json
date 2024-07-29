@@ -8,12 +8,12 @@
 	"packageManager": "pnpm@9.1.4",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/codecarrotlabs/voidfull.git"
+		"url": "git+https://github.com/VoidfullSpace/voidfull.git"
 	},
 	"bugs": {
-		"url": "https://github.com/codecarrotlabs/voidfull/issues"
+		"url": "https://github.com/VoidfullSpace/voidfull/issues"
 	},
-	"homepage": "https://github.com/codecarrotlabs/voidfull#readme",
+	"homepage": "https://github.com/VoidfullSpace/voidfull#readme",
 	"devDependencies": {
 		"@biomejs/biome": "1.8.0",
 		"lefthook": "^1.6.15"
