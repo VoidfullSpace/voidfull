@@ -67,13 +67,14 @@ export default class Voidfull {
 		},
 
 		posts: {
-			list: (
-				{ siteId }: ListPostsParameters = {
-					siteId: this.siteId
+			list: (args?: ListPostsParameters): Promise<ListPostResponse[]> => {
+				const argsObject = Object.assign({}, args);
+				if (!args?.siteId) {
+					argsObject.siteId = this.siteId;
 				}
-			): Promise<ListPostResponse[]> => {
+
 				return this.request({
-					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/posts`,
+					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${argsObject.siteId}/posts`,
 					method: 'GET'
 				});
 			},

@@ -29,7 +29,7 @@ export type SiteObject = {
 };
 
 export type RetrieveSiteParameters = {
-	siteId: string;
+	siteId?: string;
 };
 
 export type RetrieveSiteResponse = {
