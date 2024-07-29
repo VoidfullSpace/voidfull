@@ -7,7 +7,7 @@
 	"types": "src/types.ts",
 	"type": "commonjs",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"publish-verify": "pnpm dlx jsr publish --dry-run"
 	},
 	"keywords": [
 		"voidfull",
