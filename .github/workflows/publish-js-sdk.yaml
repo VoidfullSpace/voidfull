@@ -4,6 +4,9 @@ on:
   release:
     types: [created]
 
+env:
+  node_version: 20
+
 jobs:
   publish-gpr:
     runs-on: ubuntu-latest
@@ -12,11 +15,21 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        id: pnpm-install
         with:
-          node-version: 20
+          version: 9.6.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node_version }}
           registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-      - run: npm publish
+
+      - run: |
+          cd ./packages/js-sdk
+          pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
