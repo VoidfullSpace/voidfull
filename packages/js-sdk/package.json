@@ -3,12 +3,16 @@
 	"version": "0.0.0-alpha.4",
 	"description": "",
 	"license": "Apache-2.0",
-	"main": "src/index.ts",
-	"types": "src/types.ts",
-	"type": "commonjs",
+	"main": "dist/index.mjs",
+	"types": "dist/types.d.ts",
+	"type": "module",
 	"scripts": {
+		"build": "tsup",
 		"publish-verify": "pnpm dlx jsr publish --dry-run"
 	},
+	"files": [
+		"dist"
+	],
 	"keywords": [
 		"voidfull",
 		"rest",
@@ -19,6 +23,7 @@
 	"author": "",
 	"devDependencies": {
 		"@types/node": "^20.11.30",
+		"tsup": "^8.2.3",
 		"typescript": "^5.4.3"
 	}
 }
