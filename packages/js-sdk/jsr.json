@@ -1,12 +1,5 @@
 {
 	"name": "@voidfull/js-sdk",
 	"version": "0.0.0-alpha.11",
-	"exports": "./src/index.ts",
-	"publish": {
-		"include": [
-			"./dist",
-			"./package.json",
-			"./LICENSE"
-		]
-	}
+	"exports": "./src/index.ts"
 }
