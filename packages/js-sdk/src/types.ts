@@ -106,4 +106,6 @@ export type RetrievePostResponse = {
 	post: PublishedPost;
 };
 
-export type ListPostResponse = PublishedPost[];
+export type ListPostResponse = {
+	posts: PublishedPost[];
+};
