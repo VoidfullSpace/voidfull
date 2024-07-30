@@ -102,6 +102,8 @@ interface PublishedPost extends Omit<Post, 'slug' | 'publishedAt'> {
 	publishedAt: Date;
 }
 
-export type RetrievePostResponse = PublishedPost;
+export type RetrievePostResponse = {
+	post: PublishedPost;
+};
 
 export type ListPostResponse = PublishedPost[];
