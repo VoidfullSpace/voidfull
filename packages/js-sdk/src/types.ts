@@ -18,7 +18,7 @@ export interface RequestParams {
 	query?: QueryParams;
 }
 
-type PageInfo = {
+export type PageInfo = {
 	totalCount: number;
 	hasNextPage: boolean;
 	startCursor?: string;
@@ -130,7 +130,7 @@ export type RetrievePostParameters = RetrieveSiteParameters & {
 
 export type ListPostCategoriesParameters = RetrievePostParameters;
 
-type Post = {
+export type Post = {
 	id: string;
 	title: string;
 	slug: string | null;
