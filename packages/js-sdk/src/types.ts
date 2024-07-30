@@ -68,11 +68,11 @@ export type ListCategoriesResponse = Category[];
 
 export type ListPostsParameters = RetrieveSiteParameters;
 
-export type RetrievePostsParameters = RetrieveSiteParameters & {
+export type RetrievePostParameters = RetrieveSiteParameters & {
 	postId: string;
 };
 
-export type ListPostCategoriesParameters = RetrievePostsParameters;
+export type ListPostCategoriesParameters = RetrievePostParameters;
 
 type Post = {
 	id: string;
