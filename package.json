@@ -2,8 +2,8 @@
 	"name": "voidfull",
 	"private": true,
 	"engines": {
-		"node": ">=18",
-		"pnpm": ">=9.1.4"
+		"node": ">=20",
+		"pnpm": ">=9.6.0"
 	},
 	"repository": {
 		"type": "git",
