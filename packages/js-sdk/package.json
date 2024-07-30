@@ -1,6 +1,6 @@
 {
 	"name": "@voidfull/js-sdk",
-	"version": "0.0.0-alpha.12",
+	"version": "0.0.0-beta.0",
 	"description": "",
 	"source": "./src/index.ts",
 	"main": "./dist/index.js",
