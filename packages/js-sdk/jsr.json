@@ -1,5 +1,5 @@
 {
 	"name": "@voidfull/js-sdk",
-	"version": "0.0.0-alpha.9",
+	"version": "0.0.0-alpha.10",
 	"exports": "./src/index.ts"
 }
