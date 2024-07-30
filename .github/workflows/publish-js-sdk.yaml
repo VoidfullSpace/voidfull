@@ -27,7 +27,7 @@ jobs:
       - name: Build
         run: |
           pnpm i --frozen-lockfile --prod=false
-          pnpm build
+          pnpm --filter @voidfull/js-sdk build
 
       - name: Set publishing config
         run: |
@@ -36,5 +36,4 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.PKG_JS_SDK_NPM_TOKEN}}
 
       - run: |
-          cd ./packages/js-sdk
-          pnpm publish
+          pnpm --filter @voidfull/js-sdk publish
