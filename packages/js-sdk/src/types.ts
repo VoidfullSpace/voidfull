@@ -74,18 +74,33 @@ export type RetrievePostParameters = RetrieveSiteParameters & {
 
 export type ListPostCategoriesParameters = RetrievePostParameters;
 
-type PublishedPost = {
+type Post = {
 	id: string;
 	title: string;
-	slug: string;
+	slug: string | null;
 	contentMarkdown: string | null;
 	content: string | null;
 	featureImage: string | null;
-	publishedAt: Date;
-	updatedAt: Date;
+	publishedAt: Date | null;
 	timeToRead: number;
 	excerpt: string;
+	updatedAt: Date | null;
 };
+
+/**
+ * Interface representing a published post.
+ *
+ * @extends {Omit<Post, 'slug' | 'publishedAt'>}
+ *
+ * This interface includes the following properties:
+ *
+ * @property {string} slug - The unique URI where the post can be accessed.
+ * @property {Date} publishedAt - The date and time when the post was published.
+ */
+interface PublishedPost extends Omit<Post, 'slug' | 'publishedAt'> {
+	slug: string;
+	publishedAt: Date;
+}
 
 export type RetrievePostResponse = PublishedPost;
 
