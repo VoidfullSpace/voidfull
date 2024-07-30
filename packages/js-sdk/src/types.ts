@@ -18,6 +18,13 @@ export interface RequestParams {
 	query?: QueryParams;
 }
 
+type PageInfo = {
+	totalCount: number;
+	hasNextPage: boolean;
+	startCursor?: string;
+	endCursor?: string;
+};
+
 // ==========
 // SITES
 // ==========
@@ -40,27 +47,76 @@ export type RetrieveSiteResponse = {
 // CATEGORIES
 // ==========
 
-export type QueryCategoriesParameters = {
-	first: string;
-	status: string;
-	after: string;
+/**
+ * @readonly
+ * @enum {string}
+ */
+export enum CategoryStatusEnum {
+	draft = 'draft',
+	active = 'active'
+}
+
+/**
+ * This type is derived from the keys of the `CategoryStatusEnum`.
+ */
+export type CategoryStatus = keyof typeof CategoryStatusEnum;
+
+/**
+ * Query parameters for listing categories.
+ */
+export type ListCategoryQuery = {
+	/**
+	 * Categories to exclude from the list.
+	 */
+	exclude?: string | string[];
+	/**
+	 * Categories to include in the list.
+	 */
+	include?: string | string[];
+	/**
+	 * Status filter for the categories. Should be one of the values in `CategoryStatusEnum`.
+	 */
+	status?: string;
+	/**
+	 * Optional parameter specifying a starting point for the results.
+	 */
+	first?: string;
+	/**
+	 * Optional parameter to paginate results, starting after this cursor.
+	 */
+	after?: string;
 };
 
-export type RetrieveCategoriesParameteres = RetrieveSiteParameters;
+/**
+ * Parameters for listing categories.
+ *
+ * @extends {ListCategoryQuery}
+ * @extends {Required<RetrieveSiteParameters>}
+ */
+export type ListCategoryParameters = ListCategoryQuery &
+	Required<RetrieveSiteParameters>;
 
-type Category = {
+export type Category = {
 	id: string;
 	name: string;
-	slug?: string;
-	description?: string;
-	icon?: string;
-	parentId?: string;
-	status: 'active';
+	slug: string | null;
+	description: string | null;
+	icon: string | null;
+	parentId: string | null;
+	status: CategoryStatus;
 	createdAt: Date;
-	updatedAt: Date;
+	updatedAt: Date | null;
 };
 
-export type ListCategoriesResponse = Category[];
+export interface ActiveCategory extends Omit<Category, 'slug' | 'status'> {
+	slug: string;
+	status: CategoryStatusEnum.active;
+}
+
+export type ListCategoryResponse = {
+	categories: ActiveCategory[];
+	pageInfo: PageInfo;
+};
 
 // ==========
 // POSTS

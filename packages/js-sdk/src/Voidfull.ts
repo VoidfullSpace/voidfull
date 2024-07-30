@@ -2,13 +2,13 @@ import { getPackageVersion } from './utils';
 import type {
 	ClientOptions,
 	RequestParams,
-	RetrieveCategoriesParameteres,
+	ListCategoryParameters,
 	ListPostsParameters,
 	RetrieveSiteParameters,
 	RetrievePostParameters,
 	ListPostCategoriesParameters,
 	RetrieveSiteResponse,
-	ListCategoriesResponse,
+	ListCategoryResponse,
 	ListPostResponse,
 	RetrievePostResponse
 } from './types';
@@ -56,10 +56,10 @@ export default class Voidfull {
 			 * List categories of a site.
 			 */
 			list: (
-				{ siteId }: RetrieveCategoriesParameteres = {
+				{ siteId }: ListCategoryParameters = {
 					siteId: this.siteId
 				}
-			): Promise<ListCategoriesResponse[]> => {
+			): Promise<ListCategoryResponse> => {
 				return this.request({
 					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/category`,
 					method: 'GET'
@@ -94,7 +94,7 @@ export default class Voidfull {
 				list: ({
 					siteId = this.siteId,
 					postId
-				}: ListPostCategoriesParameters): Promise<ListCategoriesResponse> => {
+				}: ListPostCategoriesParameters): Promise<ListCategoryResponse> => {
 					return this.request({
 						prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/posts/${postId}/category`,
 						method: 'GET'
