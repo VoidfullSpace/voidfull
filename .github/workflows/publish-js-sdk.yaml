@@ -36,4 +36,4 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.PKG_JS_SDK_NPM_TOKEN}}
 
       - run: |
-          pnpm --filter @voidfull/js-sdk publish --no-git-checks
+          pnpm --filter @voidfull/js-sdk publish --no-git-checks --access=public
