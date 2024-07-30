@@ -74,7 +74,7 @@ export type RetrievePostParameters = RetrieveSiteParameters & {
 
 export type ListPostCategoriesParameters = RetrievePostParameters;
 
-type Post = {
+type PublishedPost = {
 	id: string;
 	title: string;
 	slug: string;
@@ -87,4 +87,6 @@ type Post = {
 	excerpt: string;
 };
 
-export type ListPostResponse = Post[];
+export type RetrievePostResponse = PublishedPost;
+
+export type ListPostResponse = PublishedPost[];

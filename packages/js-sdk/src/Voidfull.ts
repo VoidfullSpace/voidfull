@@ -9,7 +9,8 @@ import type {
 	ListPostCategoriesParameters,
 	RetrieveSiteResponse,
 	ListCategoriesResponse,
-	ListPostResponse
+	ListPostResponse,
+	RetrievePostResponse
 } from './types';
 
 export default class Voidfull {
@@ -82,7 +83,7 @@ export default class Voidfull {
 			retrieve: ({
 				siteId = this.siteId,
 				postId
-			}: RetrievePostParameters): Promise<ListPostResponse> => {
+			}: RetrievePostParameters): Promise<RetrievePostResponse> => {
 				return this.request({
 					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/posts/${postId}`,
 					method: 'GET'
