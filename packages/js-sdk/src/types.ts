@@ -76,7 +76,7 @@ export type ListCategoryQuery = {
 	/**
 	 * Status filter for the categories. Should be one of the values in `CategoryStatusEnum`.
 	 */
-	status?: string;
+	status?: CategoryStatus | CategoryStatus[];
 	/**
 	 * Optional parameter specifying a starting point for the results.
 	 */
