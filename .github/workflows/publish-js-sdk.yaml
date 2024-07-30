@@ -2,14 +2,16 @@ name: Publish @voidfull/js-sdk
 
 on:
   release:
-    types: [created]
+    types: [ created ]
 
 env:
   node_version: 20
+  js-sdk-cache-prefix: js-sdk-dist
 
 jobs:
-  publish-gpr:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -29,11 +31,80 @@ jobs:
           pnpm i --frozen-lockfile --prod=false
           pnpm --filter @voidfull/js-sdk build
 
+      - name: Cache 'dist' directory
+        uses: actions/cache@v4
+        id: cache-build
+        with:
+          path: |
+            ${{ github.workspace }}/packages/js-sdk/dist
+          # Generate a new cache whenever packages or source files change.
+          key: |
+            ${{ env.js-sdk-cache-prefix }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.js-sdk-cache-prefix }}-${{ github.sha }}
+
+  publish-npm:
+    name: "Publish to NPM"
+    runs-on: ubuntu-latest
+    needs: [build]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 9.6.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node_version }}
+
+      - name: Cache 'dist' directory
+        uses: actions/cache@v4
+        id: cache-build
+        with:
+          path: |
+            ${{ github.workspace }}/packages/js-sdk/dist
+          key: |
+            ${{ env.js-sdk-cache-prefix }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.js-sdk-cache-prefix }}-${{ github.sha }}
+
       - name: Set publishing config
-        run: |
-          pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
+        run: pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
         env:
           NODE_AUTH_TOKEN: ${{secrets.PKG_JS_SDK_NPM_TOKEN}}
 
       - run: |
           pnpm --filter @voidfull/js-sdk publish --no-git-checks --access=public
+
+  publish-jsr:
+    name: "Publish to JSR"
+    runs-on: ubuntu-latest
+    needs: [build]
+
+    permissions:
+      contents: read
+      # The OIDC ID token is used for authentication with JSR.
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache 'dist' directory
+        uses: actions/cache@v4
+        id: cache-build
+        with:
+          path: |
+            ${{ github.workspace }}/packages/js-sdk/dist
+          key: |
+            ${{ env.js-sdk-cache-prefix }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.js-sdk-cache-prefix }}-${{ github.sha }}
+
+      - run: |
+          cd ./packages/js-sdk
+          npx jsr publish
