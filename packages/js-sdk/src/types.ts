@@ -93,8 +93,7 @@ export type ListCategoryQuery = {
  * @extends {ListCategoryQuery}
  * @extends {Required<RetrieveSiteParameters>}
  */
-export type ListCategoryParameters = ListCategoryQuery &
-	Required<RetrieveSiteParameters>;
+export type ListCategoryParameters = ListCategoryQuery & RetrieveSiteParameters;
 
 export type Category = {
 	id: string;
