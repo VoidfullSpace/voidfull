@@ -68,7 +68,7 @@ export default class Voidfull {
 		},
 
 		posts: {
-			list: (args?: ListPostsParameters): Promise<ListPostResponse[]> => {
+			list: (args?: ListPostsParameters): Promise<ListPostResponse> => {
 				const argsObject = Object.assign({}, args);
 				if (!args?.siteId) {
 					argsObject.siteId = this.siteId;
