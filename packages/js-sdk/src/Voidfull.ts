@@ -14,7 +14,7 @@ import type {
 } from './types';
 
 export default class Voidfull {
-	readonly apiBaseUrl = 'https://api.app.voidfull.com';
+	readonly apiBaseUrl = 'https://api.app.voidfull.com/api';
 
 	private readonly voidfullVersion: string;
 	private readonly defaultVoidfullVersion: string = 'v1';
