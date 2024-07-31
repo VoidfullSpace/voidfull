@@ -10,7 +10,11 @@ import type {
 	RetrieveSiteResponse,
 	ListCategoryResponse,
 	ListPostResponse,
-	RetrievePostResponse
+	RetrievePostResponse,
+	RetrieveCategoryParameters,
+	RetrieveCategoryResponse,
+	ListCategoryPostsParameters,
+	ListCategoryPostsResponse
 } from './types';
 
 export default class Voidfull {
@@ -62,6 +66,26 @@ export default class Voidfull {
 			): Promise<ListCategoryResponse> => {
 				return this.request({
 					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/category`,
+					method: 'GET'
+				});
+			},
+
+			retrieve: ({
+				siteId = this.siteId,
+				categoryId
+			}: RetrieveCategoryParameters): Promise<RetrieveCategoryResponse> => {
+				return this.request({
+					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/category/${categoryId}`,
+					method: 'GET'
+				});
+			},
+
+			posts: ({
+				siteId = this.siteId,
+				categoryId
+			}: ListCategoryPostsParameters): Promise<ListCategoryPostsResponse> => {
+				return this.request({
+					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/category/${categoryId}/posts`,
 					method: 'GET'
 				});
 			}

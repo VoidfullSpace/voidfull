@@ -117,6 +117,21 @@ export type ListCategoryResponse = {
 	pageInfo: PageInfo;
 };
 
+export type RetrieveCategoryParameters = RetrieveSiteParameters & {
+	categoryId: string;
+};
+
+export type RetrieveCategoryResponse = {
+	category: ActiveCategory;
+	subCategories: { id: string }[];
+};
+
+export type ListCategoryPostsParameters = RetrieveCategoryParameters;
+
+export type ListCategoryPostsResponse = {
+	posts: Post[];
+};
+
 // ==========
 // POSTS
 // ==========
