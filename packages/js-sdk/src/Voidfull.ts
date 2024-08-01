@@ -37,8 +37,6 @@ export default class Voidfull {
 		} else if (process.env?.['VOIDFULL_CONTENT_TOKEN']) {
 			// biome-ignore lint/complexity/useLiteralKeys: Property VOIDFULL_CONTENT_TOKEN comes from an index signature,
 			this.token = process.env['VOIDFULL_CONTENT_TOKEN'];
-		} else {
-			throw Error('Failed to authorise');
 		}
 	}
 
