@@ -59,13 +59,14 @@ export default class Voidfull {
 			/**
 			 * List categories of a site.
 			 */
-			list: (
-				{ siteId }: ListCategoryParameters = {
-					siteId: this.siteId
+			list: (args?: ListCategoryParameters): Promise<ListCategoryResponse> => {
+				const argsObject = Object.assign({}, args);
+				if (!args?.siteId) {
+					argsObject.siteId = this.siteId;
 				}
-			): Promise<ListCategoryResponse> => {
+
 				return this.request({
-					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/category`,
+					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${argsObject.siteId}/category`,
 					method: 'GET'
 				});
 			},
