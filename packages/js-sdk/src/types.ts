@@ -142,6 +142,10 @@ export type RetrievePostParameters = RetrieveSiteParameters & {
 	postId: string;
 };
 
+export type RetrievePostBySlugParameters = RetrievePostParameters & {
+	postSlug: string;
+};
+
 export type ListPostCategoriesParameters = RetrievePostParameters;
 
 export type Post = {
@@ -173,6 +177,10 @@ interface PublishedPost extends Omit<Post, 'slug' | 'publishedAt'> {
 }
 
 export type RetrievePostResponse = {
+	post: PublishedPost;
+};
+
+export type RetrievePostBySlugResponse = {
 	post: PublishedPost;
 };
 

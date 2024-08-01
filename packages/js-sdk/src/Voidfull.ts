@@ -14,7 +14,9 @@ import type {
 	RetrieveCategoryParameters,
 	RetrieveCategoryResponse,
 	ListCategoryPostsParameters,
-	ListCategoryPostsResponse
+	ListCategoryPostsResponse,
+	RetrievePostBySlugParameters,
+	RetrievePostBySlugResponse
 } from './types';
 
 export default class Voidfull {
@@ -111,6 +113,16 @@ export default class Voidfull {
 			}: RetrievePostParameters): Promise<RetrievePostResponse> => {
 				return this.request({
 					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/posts/${postId}`,
+					method: 'GET'
+				});
+			},
+
+			slug: ({
+				siteId = this.siteId,
+				postSlug
+			}: RetrievePostBySlugParameters): Promise<RetrievePostBySlugResponse> => {
+				return this.request({
+					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${siteId}/posts/slug/${postSlug}`,
 					method: 'GET'
 				});
 			},
