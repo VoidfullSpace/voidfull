@@ -129,7 +129,7 @@ export type RetrieveCategoryResponse = {
 export type ListCategoryPostsParameters = RetrieveCategoryParameters;
 
 export type ListCategoryPostsResponse = {
-	posts: Post[];
+	posts: PublishedPost[];
 };
 
 // ==========
