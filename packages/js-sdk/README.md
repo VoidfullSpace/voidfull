@@ -1,8 +1,8 @@
 <p align="center">
   <a href="https://voidfull.com">
     <img src="https://voidfull.com/favicon.svg" height="96">
-    <h3 align="center">Voidfull</h3>
   </a>
+  <h3 align="center">Voidfull</h3>
 </p>
 
 <p align="center">
@@ -10,6 +10,7 @@
 </p>
 
 <p align="center">
+  <a href="https://voidfull.com"><strong>Voidfull</strong></a> ·
   <a href="https://github.com/voidfull-templates"><strong>Templates</strong></a>
 </p>
 <br/>
