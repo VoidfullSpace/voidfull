@@ -65,7 +65,14 @@ export default class Voidfull {
 
 				return this.request({
 					prefixUrl: `${this.apiBaseUrl}/${this.voidfullVersion}/sites/${argsObject.siteId}/category`,
-					method: 'GET'
+					method: 'GET',
+					query: {
+						status: args?.status,
+						include: args?.include,
+						exclude: args?.exclude,
+						first: args?.first,
+						after: args?.after
+					}
 				});
 			},
 
