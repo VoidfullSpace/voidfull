@@ -1,4 +1,4 @@
-import { getPackageVersion } from './utils';
+import { getEnv, getPackageVersion } from './utils';
 import type {
 	ClientOptions,
 	RequestParams,
@@ -33,10 +33,8 @@ export default class Voidfull {
 
 		if (token) {
 			this.token = token;
-			// biome-ignore lint/complexity/useLiteralKeys: Property VOIDFULL_CONTENT_TOKEN comes from an index signature,
-		} else if (process.env?.['VOIDFULL_CONTENT_TOKEN']) {
-			// biome-ignore lint/complexity/useLiteralKeys: Property VOIDFULL_CONTENT_TOKEN comes from an index signature,
-			this.token = process.env['VOIDFULL_CONTENT_TOKEN'];
+		} else if (getEnv('VOIDFULL_CONTENT_TOKEN')) {
+			this.token = getEnv('VOIDFULL_CONTENT_TOKEN');
 		}
 	}
 

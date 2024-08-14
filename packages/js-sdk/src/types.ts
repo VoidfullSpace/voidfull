@@ -1,6 +1,6 @@
 export interface ClientOptions {
 	/**
-	 * Defaults to process.env['VOIDFULL_CONTENT_TOKEN'].
+	 * Defaults to 'VOIDFULL_CONTENT_TOKEN' environment variable.
 	 */
 	token?: string;
 	siteId: string;

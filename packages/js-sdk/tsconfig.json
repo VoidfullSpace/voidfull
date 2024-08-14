@@ -1,10 +1,10 @@
 {
-	"include": ["src", "tests", "examples"],
+	"include": ["src", "tests", "examples", "env.d.ts"],
 	"exclude": ["src/_shims/**/*-deno.ts"],
 	"compilerOptions": {
 		"target": "es2020",
 		"lib": ["es2020"],
-		"module": "commonjs",
+		"module": "es2020",
 		"moduleResolution": "node",
 		"esModuleInterop": true,
 		"baseUrl": "./",
